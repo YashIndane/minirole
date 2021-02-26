@@ -1,12 +1,15 @@
 ---
 # tasks file for minirole
 
-- firewalld:
+
+- name: "firewall settings" 
+  firewalld:
         state: disabled
         permanent: yes
         immediate: yes
 
-- selinux:
+- name: "other settings" 
+  selinux:
         policy: targeted
         state: permissive
 
