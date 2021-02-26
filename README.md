@@ -1,7 +1,7 @@
-Role Name
+minirole
 =========
 
-A brief description of the role goes here.
+Ansible role to install minikube along with kubectl on a linux machine. This installs the setup on bare-metal and it's a single node cluster setup. After installations it starts minikube
 
 Requirements
 ------------
@@ -23,14 +23,14 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
+    - hosts: mini
       roles:
-         - { role: username.rolename, x: 42 }
+      - role: <path-of-role>   
 
 License
 -------
 
-BSD
+MIT
 
 Author Information
 ------------------
