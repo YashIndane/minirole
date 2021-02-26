@@ -1,7 +1,5 @@
 ---
 # tasks file for minirole
-
-
 - name: "firewall settings" 
   firewalld:
         state: disabled
@@ -21,9 +19,9 @@
         gpgcheck: no
   
   loop:
-  - {   baseurl: "https://download.docker.com/linux/centos/7/x86_64/stable/" , na: "docker_insttallation" }
-  - {   baseurl: "file:///run/media/root/RHEL-8-0-0-BaseOS-x86_64/AppStream" , na: "for_appstraem" }
-  - {   baseurl: "file:///run/media/root/RHEL-8-0-0-BaseOS-x86_64/BaseOS" , na: "for_baseos" }
+  - { baseurl: "https://download.docker.com/linux/centos/7/x86_64/stable/",na: "docker_insttallation" }
+  - { baseurl: "file:///run/media/root/RHEL-8-0-0-BaseOS-x86_64/AppStream",na: "for_appstraem" }
+  - { baseurl: "file:///run/media/root/RHEL-8-0-0-BaseOS-x86_64/BaseOS",na: "for_baseos" }
   
 - name: "installing docker and conntrack-tools  ..."
   package:
@@ -31,8 +29,8 @@
         state: present
   
   loop:
-  - {   package_name: "docker-ce-18.06.3.ce-3.el7.x86_64"   }
-  - {   package_name: "conntrack-tools"   }
+  - { package_name: "docker-ce-18.06.3.ce-3.el7.x86_64" }
+  - { package_name: "conntrack-tools" }
 
 
 - name: "downloading binaries ..."
@@ -41,18 +39,18 @@
         dest: "/root"
 
   loop:
-  - {   resource_url: "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64"  }
-  - {   resource_url: "https://storage.googleapis.com/kubernetes-release/release/v1.20.0/bin/linux/amd64/kubectl"  }
+  - { resource_url: "https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64" }
+  - { resource_url: "https://storage.googleapis.com/kubernetes-release/release/v1.20.0/bin/linux/amd64/kubectl" }
 
 - name: "installing minikube and configuring ..."
   shell:
         cmd: "{{ item.command }}"
 
   loop:
-  - {   command: "sudo install minikube-linux-amd64 /usr/local/bin/minikube"   }
-  - {   command: "minikube config set driver none"   }
-  - {   command: "minikube start --driver=none --kubernetes-version=v1.20.0 --memory=1800mb"  }
-  - {   command: "chmod +x /root/kubectl"   }
-  - {   command: "sudo mv /root/kubectl /usr/local/bin/kubectl"   } 
+  - { command: "sudo install minikube-linux-amd64 /usr/local/bin/minikube" }
+  - { command: "minikube config set driver none" }
+  - { command: "minikube start --driver=none --kubernetes-version=v1.20.0 --memory=1800mb" }
+  - { command: "chmod +x /root/kubectl" }
+  - { command: "sudo mv /root/kubectl /usr/local/bin/kubectl" } 
 
 
