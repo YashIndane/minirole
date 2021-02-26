@@ -18,9 +18,9 @@
         baseurl: "{{ item.baseurl }}"
         gpgcheck: no
   loop:
-  - { baseurl: "https://download.docker.com/linux/centos/7/x86_64/stable/",na: "docker_insttallation" }
-  - { baseurl: "file:///run/media/root/RHEL-8-0-0-BaseOS-x86_64/AppStream",na: "for_appstraem" }
-  - { baseurl: "file:///run/media/root/RHEL-8-0-0-BaseOS-x86_64/BaseOS",na: "for_baseos" }
+  - { baseurl: "https://download.docker.com/linux/centos/7/x86_64/stable/", na: "docker_insttallation" }
+  - { baseurl: "file:///run/media/root/RHEL-8-0-0-BaseOS-x86_64/AppStream", na: "for_appstraem" }
+  - { baseurl: "file:///run/media/root/RHEL-8-0-0-BaseOS-x86_64/BaseOS", na: "for_baseos" }
   
 - name: "installing docker and conntrack-tools  ..."
   package:
@@ -47,6 +47,4 @@
   - { command: "minikube config set driver none" }
   - { command: "minikube start --driver=none --kubernetes-version=v1.20.0 --memory=1800mb" }
   - { command: "chmod +x /root/kubectl" }
-  - { command: "sudo mv /root/kubectl /usr/local/bin/kubectl" } 
-
-
+  - { command: "sudo mv /root/kubectl /usr/local/bin/kubectl" }
