@@ -1,7 +1,7 @@
 galaxy_info:
   author: Yash Indane
   description: A role to install and configure minikube for kubernetes
-  company: RCOEM
+ 
 
   # If the issue tracker for your role is not on github, uncomment the
   # next line and provide a value
@@ -28,9 +28,9 @@ galaxy_info:
   # https://galaxy.ansible.com/api/v1/platforms/
   #
   platforms:
-    - name: RHEL
-      versions:
-      - 8
+  - name: GenericLinux
+    versions:
+      - any 
   #   - 25
   # - name: SomePlatform
   #   versions:
